@@ -8,14 +8,17 @@
 
 <div class="container">
 
-  <h2><i class="fa fa-lock"></i> Login</h2>
+  <h2>Login</h2>
 
-  <input type="text" id="user" placeholder="Username">
-  <input type="password" id="pass" placeholder="Password">
+  <!-- IMPORTANT: form wrapper -->
+  <form onsubmit="login(event)">
 
-  <br>
+    <input type="text" id="user" placeholder="Username">
+    <input type="password" id="pass" placeholder="Password">
 
-  <button onclick="login()">Login</button>
+    <button type="submit">Login</button>
+
+  </form>
 
   <p id="msg"></p>
 

@@ -2,52 +2,42 @@
 <html>
 <head>
   <title>Dashboard</title>
+
   <link rel="stylesheet" href="style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<div class="dashboard">
+<div id="notify"></div>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>🌿 Irrigation</h2>
+<div class="sidebar">
+  <h2>🌿 Smart Irrigation</h2>
 
-    <a href="#"><i class="fa fa-house"></i> Home</a>
-    <a href="#"><i class="fa fa-chart-line"></i> Analytics</a>
-    <a href="#"><i class="fa fa-gear"></i> Settings</a>
-  </div>
+  <a href="select.html">🏠 Home</a>
+  <a href="#" onclick="setMode('auto')">🤖 Auto Mode</a>
+  <a href="#" onclick="setMode('manual')">✋ Manual Mode</a>
+  <a href="#" onclick="toggleWater()">💧 Water Toggle</a>
+</div>
 
-  <!-- MAIN -->
-  <div class="main">
+<div class="main">
 
-    <h1>Dashboard Overview</h1>
+  <h1>Live Dashboard</h1>
 
-    <div class="grid">
-
-      <div class="card">
-        <h3><i class="fa fa-water"></i> Moisture</h3>
-        <p id="moisture">--%</p>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa fa-temperature-half"></i> Temperature</h3>
-        <p id="temp">--°C</p>
-      </div>
-
-      <div class="card">
-        <h3><i class="fa fa-droplet"></i> Water Level</h3>
-        <p id="water">--%</p>
-      </div>
-
+  <div class="grid">
+    <div class="card">
+      🌱 Moisture <h2 id="moisture">--</h2>
     </div>
 
-    <br>
+    <div class="card">
+      🌡 Temp <h2 id="temp">--</h2>
+    </div>
 
-    <button onclick="waterOn()">💧 Water ON</button>
-    <button onclick="waterOff()">🚫 Water OFF</button>
-
+    <div class="card">
+      💧 Water <h2 id="water">--</h2>
+    </div>
   </div>
+
+  <canvas id="chart" width="400"></canvas>
 
 </div>
 

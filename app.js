@@ -1,28 +1,79 @@
-function login() {
-  let user = document.getElementById("user").value;
-  let pass = document.getElementById("pass").value;
 
-  if (user && pass) {
-    document.getElementById("msg").innerText = "Login successful 🚀";
-    setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 800);
-  } else {
-    document.getElementById("msg").innerText = "Please fill all fields";
-  }
+let mode = "manual";
+let waterOn = false;
+
+// NOTIFICATION SYSTEM
+function notify(msg) {
+  const n = document.getElementById("notify");
+  n.innerText = msg;
+  n.style.display = "block";
+
+  setTimeout(() => {
+    n.style.display = "none";
+  }, 2000);
 }
 
-// fake live data
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("moisture")?.innerText = Math.floor(Math.random() * 100) + "%";
-  document.getElementById("temp")?.innerText = Math.floor(Math.random() * 35 + 15) + "°C";
-  document.getElementById("water")?.innerText = Math.floor(Math.random() * 100) + "%";
-});
-
-function waterOn() {
-  alert("💧 Irrigation system activated");
+// MODE SWITCH
+function setMode(m) {
+  mode = m;
+  notify("Mode set to " + m.toUpperCase());
 }
 
-function waterOff() {
-  alert("🚫 Irrigation system stopped");
+// WATER TOGGLE
+function toggleWater() {
+  waterOn = !waterOn;
+  notify(waterOn ? "💧 Water ON" : "🚫 Water OFF");
 }
+
+// SENSOR STREAM (REAL-TIME FAKE IoT)
+let moistureData = [];
+
+function updateSensors() {
+  let moisture = Math.floor(Math.random() * 100);
+  let temp = Math.floor(Math.random() * 40 + 10);
+  let water = Math.floor(Math.random() * 100);
+
+  document.getElementById("moisture").innerText = moisture;
+  document.getElementById("temp").innerText = temp;
+  document.getElementById("water").innerText = water;
+
+  moistureData.push(moisture);
+  if (moistureData.length > 10) moistureData.shift();
+
+  updateChart();
+
+  // ALERT SYSTEM
+  if (moisture < 30) notify("⚠ Soil Dry!");
+}
+
+// CHART (ANIMATED)
+let chart;
+
+function initChart() {
+  const ctx = document.getElementById("chart");
+
+  chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Moisture Level',
+        data: [],
+        borderColor: '#22c55e',
+        tension: 0.4
+      }]
+    }
+  });
+}
+
+function updateChart() {
+  chart.data.labels = moistureData.map((_, i) => i);
+  chart.data.datasets[0].data = moistureData;
+  chart.update();
+}
+
+// INIT
+window.onload = () => {
+  initChart();
+  setInterval(updateSensors, 2000); // LIVE STREAM every 2 sec
+};
