@@ -1,18 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Smart Irrigation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TerraFlow · Smart Irrigation</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="hero">
-  <div class="glass" style="max-width:600px;">
-    <h1>🌱 Smart Irrigation System</h1>
-    <p>Modern monitoring for soil, water & climate control</p>
-    <br>
-    <button onclick="goLogin()">Login</button>
-    <button onclick="go('selection.html')">Go to System</button>
+  <div class="glass" style="max-width:620px;">
+    <span class="badge">🌱 Soil Intelligence Platform</span>
+    <h1>Know your soil.<br>Water with purpose.</h1>
+    <div class="leaf-divider"></div>
+    <p class="lede">
+      Live moisture, temperature and water-level readings paired with
+      soil-aware recommendations — so every drop counts.
+    </p>
+    <div class="actions">
+      <button onclick="goLogin()">Sign in to your system</button>
+      <button class="ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How it works</button>
+    </div>
+  </div>
+</div>
+
+<div id="how" class="content" style="max-width:900px; margin:0 auto; padding-bottom:80px;">
+  <div class="eyebrow">How it works</div>
+  <h2 style="margin-bottom:24px;">Three steps to a healthier field</h2>
+  <div class="grid">
+    <div class="glass card" style="cursor:default;">
+      <span class="icon">🔐</span>
+      <h3>Sign in</h3>
+      <p>Access your private irrigation dashboard securely.</p>
+    </div>
+    <div class="glass card" style="cursor:default;">
+      <span class="icon">🌾</span>
+      <h3>Choose soil type</h3>
+      <p>Sandy, clay or loamy — calibrate readings to your field.</p>
+    </div>
+    <div class="glass card" style="cursor:default;">
+      <span class="icon">📊</span>
+      <h3>Monitor live</h3>
+      <p>Track moisture, temperature and water level in real time.</p>
+    </div>
   </div>
 </div>
 

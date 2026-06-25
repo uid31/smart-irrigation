@@ -1,38 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard · TerraFlow</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
   <div class="sidebar glass">
-    <h3>🌿 Menu</h3>
-    selection.html🌱 Selection</a>
-    dashboard.html📊 Dashboard</a>
-    <a onclick="logout()">🚪 Logout</a>
+    <div class="brand">🌿 TerraFlow</div>
+    <nav>
+      <a href="selection.html">🌱 Soil Selection</a>
+      <a href="dashboard.html" class="active">📊 Dashboard</a>
+    </nav>
+    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
   </div>
 
   <div class="content">
-    <h1>Live System</h1>
+    <div class="eyebrow">Step 2 of 2</div>
+    <h1>Live system</h1>
+    <p style="margin-top:8px;">Soil profile: <strong id="soilType" style="color:var(--leaf-soft);">--</strong></p>
 
-    <h3>Soil: <span id="soilType">--</span></h3>
+    <div class="stat-grid">
+      <div class="glass stat-card">
+        <div class="stat-top">
+          <span class="stat-icon">🌱</span>
+        </div>
+        <div class="stat-label">Moisture</div>
+        <h2 class="stat-value" id="moisture">--</h2>
+        <div class="bar-track"><div class="bar-fill" id="moistureBar" style="width:0%"></div></div>
+        <span class="stat-status status-good" id="moistureStatus">Reading…</span>
+      </div>
 
-    <div class="grid">
-      <div class="glass">
-        🌱 Moisture <h2 id="moisture">--</h2>
+      <div class="glass stat-card">
+        <div class="stat-top">
+          <span class="stat-icon">🌡</span>
+        </div>
+        <div class="stat-label">Temperature</div>
+        <h2 class="stat-value" id="temp">--</h2>
+        <div class="bar-track"><div class="bar-fill" id="tempBar" style="width:0%"></div></div>
       </div>
-      <div class="glass">
-        🌡 Temperature <h2 id="temp">--</h2>
-      </div>
-      <div class="glass">
-        💧 Water <h2 id="water">--</h2>
+
+      <div class="glass stat-card">
+        <div class="stat-top">
+          <span class="stat-icon">💧</span>
+        </div>
+        <div class="stat-label">Water level</div>
+        <h2 class="stat-value" id="water">--</h2>
+        <div class="bar-track"><div class="bar-fill" id="waterBar" style="width:0%"></div></div>
       </div>
     </div>
   </div>
 </div>
-<script src="app.js"></script
 
+<script src="app.js"></script>
 </body>
 </html>

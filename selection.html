@@ -1,22 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Select Soil</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Soil · TerraFlow</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="main">
-  <h1>🌱 Choose Soil Type</h1>
-
-  <div class="grid">
-    <div class="card" onclick="selectSoil('Sandy')">🌾 Sandy Soil</div>
-    <div class="card" onclick="selectSoil('Clay')">🪨 Clay Soil</div>
-    <div class="card" onclick="selectSoil('Loamy')">🌿 Loamy Soil</div>
+<div class="app">
+  <div class="sidebar glass">
+    <div class="brand">🌿 TerraFlow</div>
+    <nav>
+      <a href="selection.html" class="active">🌱 Soil Selection</a>
+      <a href="dashboard.html">📊 Dashboard</a>
+    </nav>
+    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
   </div>
 
-  <br>
-  <button onclick="goDashboard()">Continue → Dashboard</button>
+  <div class="content">
+    <div class="eyebrow">Step 1 of 2</div>
+    <h1>Choose your soil type</h1>
+    <p style="margin-top:8px;">This calibrates how your dashboard reads moisture and water level.</p>
+
+    <div class="grid">
+      <div class="glass card" data-soil="Sandy" onclick="selectSoil('Sandy', this)">
+        <span class="icon">🌾</span>
+        <h3>Sandy</h3>
+        <p>Drains fast, light frequent watering.</p>
+      </div>
+      <div class="glass card" data-soil="Clay" onclick="selectSoil('Clay', this)">
+        <span class="icon">🪨</span>
+        <h3>Clay</h3>
+        <p>Holds water, watch for waterlogging.</p>
+      </div>
+      <div class="glass card" data-soil="Loamy" onclick="selectSoil('Loamy', this)">
+        <span class="icon">🌿</span>
+        <h3>Loamy</h3>
+        <p>Balanced texture, ideal retention.</p>
+      </div>
+    </div>
+
+    <div class="selection-footer">
+      <p id="soilHint" style="margin:0;">Select a soil type to continue.</p>
+      <button id="continueBtn" onclick="goDashboard()" disabled>Continue → Dashboard</button>
+    </div>
+  </div>
 </div>
 
 <script src="app.js"></script>

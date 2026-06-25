@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In · TerraFlow</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -9,19 +11,30 @@
 <div class="login-wrapper">
 
   <div class="login-left">
-    <div class="glass" style="max-width:400px;">
-      <h1>🌿 Welcome Back</h1>
-      <p>Access your irrigation system dashboard</p>
+    <div class="glass">
+      <span class="badge">🌿 TerraFlow</span>
+      <h1>Welcome back</h1>
+      <p style="margin-top:10px;">
+        Sign in to view live soil conditions and manage your irrigation system.
+      </p>
     </div>
   </div>
 
   <div class="login-right">
-    <div class="glass" style="width:350px;">
-      <h2>Login</h2>
-      <input id="user" placeholder="Username">
-      <input id="pass" type="password" placeholder="Password">
-      <button onclick="login()">Sign In</button>
+    <div class="glass">
+      <h2 style="margin-bottom:6px;">Sign in</h2>
+      <p style="margin-bottom:6px; font-size:14px;">Enter your details to continue.</p>
+
+      <label for="user">Username</label>
+      <input id="user" placeholder="e.g. fieldmanager01">
+
+      <label for="pass">Password</label>
+      <input id="pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter'){login()}">
+
       <p id="msg"></p>
+
+      <button style="width:100%; margin-top:10px;" onclick="login()">Sign In</button>
+      <button class="ghost" style="width:100%; margin-top:10px;" onclick="go('index.html')">Back to home</button>
     </div>
   </div>
 
