@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Select</title>
+  <title>Select Soil</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="main">
 
-  <h1>Choose Dashboard Mode</h1>
+  <h1>🌱 Choose Soil Type</h1>
 
   <div class="grid">
 
-    <div class="card" onclick="location.href='dashboard.html'">
-      📊 Live Dashboard
+    <div class="card" onclick="selectSoil('Sandy')">
+      🌾 Sandy Soil
     </div>
 
-    <div class="card" onclick="location.href='dashboard.html'">
-      💧 Water Control
+    <div class="card" onclick="selectSoil('Clay')">
+      🪨 Clay Soil
+    </div>
+
+    <div class="card" onclick="selectSoil('Loamy')">
+      🌿 Loamy Soil
     </div>
 
   </div>
 
+  <button onclick="goDashboard()">Continue → Dashboard</button>
+
 </div>
 
+<script src="app.js"></script>
 </body>
 </html>
