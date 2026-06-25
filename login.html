@@ -1,13 +1,39 @@
-function login() {
-  let u = document.getElementById("user").value;
-  let p = document.getElementById("pass").value;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  if (!u || !p) {
-    document.getElementById("msg").innerText = "Fill all fields";
-    return;
-  }
+<div class="login-wrapper">
 
-  localStorage.setItem("loggedIn", "true");
+  <!-- LEFT INFO SIDE -->
+  <div class="login-left">
+    <div class="glass" style="max-width:400px;">
+      <h1>🌿 Welcome Back</h1>
+      <p>Access your irrigation system dashboard</p>
+    </div>
+  </div>
 
-  window.location.href = "select.html";
-}
+  <!-- RIGHT LOGIN BOX -->
+  <div class="login-right">
+
+    <div class="glass" style="width:350px;">
+      <h2>Login</h2>
+
+      <input id="user" placeholder="Username">
+      <input id="pass" type="password" placeholder="Password">
+
+      <button onclick="login()">Sign In</button>
+
+      <p id="msg"></p>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
