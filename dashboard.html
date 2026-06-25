@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>🌿 Irrigation</h2>
+
+    <a href="#"><i class="fa fa-house"></i> Home</a>
+    <a href="#"><i class="fa fa-chart-line"></i> Analytics</a>
+    <a href="#"><i class="fa fa-gear"></i> Settings</a>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <h1>Dashboard Overview</h1>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3><i class="fa fa-water"></i> Moisture</h3>
+        <p id="moisture">--%</p>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa fa-temperature-half"></i> Temperature</h3>
+        <p id="temp">--°C</p>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa fa-droplet"></i> Water Level</h3>
+        <p id="water">--%</p>
+      </div>
+
+    </div>
+
+    <br>
+
+    <button onclick="waterOn()">💧 Water ON</button>
+    <button onclick="waterOff()">🚫 Water OFF</button>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
