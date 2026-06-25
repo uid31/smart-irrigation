@@ -1,67 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Smart Irrigation Dashboard</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-
-    <h2>🌿 Smart Irrigation</h2>
+  <div class="sidebar glass">
+    <h3>🌿 Menu</h3>
 
     <a href="select.html">🌱 Selection</a>
     <a href="dashboard.html">📊 Dashboard</a>
     <a onclick="logout()">🚪 Logout</a>
-
   </div>
 
-  <!-- MAIN CONTENT -->
   <div class="content">
 
-    <h1>📊 Live Dashboard</h1>
+    <h1>Live System</h1>
 
-    <!-- SOIL TYPE DISPLAY -->
-    <div class="card" style="margin-bottom:20px;">
-      🌱 Selected Soil: <b id="soilType">Loading...</b>
-    </div>
-
-    <!-- STATUS GRID -->
     <div class="grid">
 
-      <div class="card">
-        🌱 Moisture
-        <h2 id="moisture">--%</h2>
+      <div class="glass">
+        🌱 Moisture <h2 id="moisture">--</h2>
       </div>
 
-      <div class="card">
-        🌡 Temperature
-        <h2 id="temp">--°C</h2>
+      <div class="glass">
+        🌡 Temperature <h2 id="temp">--</h2>
       </div>
 
-      <div class="card">
-        💧 Water Level
-        <h2 id="water">--%</h2>
+      <div class="glass">
+        💧 Water <h2 id="water">--</h2>
       </div>
-
-      <div class="card">
-        ⚙ System Status
-        <h2 id="status">Active</h2>
-      </div>
-
-    </div>
-
-    <!-- CONTROL PANEL -->
-    <div class="card" style="margin-top:20px; width:100%; max-width:500px;">
-
-      <h3>⚙ Control Panel</h3>
-
-      <button onclick="setMode('auto')">🤖 Auto Mode</button>
-      <button onclick="setMode('manual')">✋ Manual Mode</button>
-      <button onclick="toggleWater()">💧 Toggle Water</button>
 
     </div>
 
