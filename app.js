@@ -1,8 +1,6 @@
-
 // =====================
-// NAVIGATION HELPERS
+// NAVIGATION
 // =====================
-
 function go(page) {
   window.location.href = page;
 }
@@ -16,9 +14,8 @@ function goDashboard() {
 }
 
 // =====================
-// LOGIN SYSTEM (FAKE AUTH)
+// LOGIN
 // =====================
-
 function login() {
   let u = document.getElementById("user").value;
   let p = document.getElementById("pass").value;
@@ -29,14 +26,20 @@ function login() {
   }
 
   localStorage.setItem("loggedIn", "true");
+  window.location.href = "selection.html";
+}
 
-  window.location.href = "select.html";
+// =====================
+// LOGOUT
+// =====================
+function logout() {
+  localStorage.removeItem("loggedIn");
+  window.location.href = "login.html";
 }
 
 // =====================
 // PROTECT DASHBOARD
 // =====================
-
 if (window.location.pathname.includes("dashboard")) {
   if (!localStorage.getItem("loggedIn")) {
     window.location.href = "login.html";
@@ -46,85 +49,46 @@ if (window.location.pathname.includes("dashboard")) {
 // =====================
 // SOIL SELECTION
 // =====================
-
 function selectSoil(type) {
   localStorage.setItem("soilType", type);
   alert("Selected: " + type);
 }
 
 // =====================
-// LOGOUT
+// LOAD DATA
 // =====================
-
-function logout() {
-  localStorage.removeItem("loggedIn");
-  window.location.href = "login.html";
-}
-
-// =====================
-// LIVE SENSOR SIMULATION
-// =====================
-
-function updateData() {
-  document.getElementById("moisture")?.innerText = Math.floor(Math.random() * 100) + "%";
-  document.getElementById("temp")?.innerText = Math.floor(Math.random() * 35 + 15) + "°C";
-  document.getElementById("water")?.innerText = Math.floor(Math.random() * 100) + "%";
-}
-
-setInterval(updateData, 2000);
-
-
-// =====================
-// DASHBOARD FEATURES
-// =====================
-
-let mode = "manual";
-let water = false;
-
-// LOAD SOIL TYPE FROM SELECTION PAGE
 window.addEventListener("load", () => {
-  const soil = localStorage.getItem("soilType");
-  if (document.getElementById("soilType")) {
-    document.getElementById("soilType").innerText = soil || "Not selected";
+  let soil = localStorage.getItem("soilType");
+  let soilEl = document.getElementById("soilType");
+
+  if (soilEl) {
+    soilEl.innerText = soil || "Not selected";
   }
 });
 
-// MODE CONTROL
-function setMode(m) {
-  mode = m;
-  alert("Mode set to: " + m.toUpperCase());
-}
-
-// WATER CONTROL
-function toggleWater() {
-  water = !water;
-  alert(water ? "💧 Water ON" : "🚫 Water OFF");
-}
-
-// LIVE SENSOR SIMULATION
+// =====================
+// SENSOR SIMULATION
+// =====================
 function updateDashboard() {
+  let m = document.getElementById("moisture");
+  let t = document.getElementById("temp");
+  let w = document.getElementById("water");
 
-  if (document.getElementById("moisture")) {
+  if (m && t && w) {
     let moisture = Math.floor(Math.random() * 100);
     let temp = Math.floor(Math.random() * 40 + 10);
-    let waterLevel = Math.floor(Math.random() * 100);
+    let water = Math.floor(Math.random() * 100);
 
-    document.getElementById("moisture").innerText = moisture + "%";
-    document.getElementById("temp").innerText = temp + "°C";
-    document.getElementById("water").innerText = waterLevel + "%";
+    m.innerText = moisture + "%";
+    t.innerText = temp + "°C";
+    w.innerText = water + "%";
 
-    // AUTO ALERT SYSTEM
-    if (moisture < 30) {
-      alert("⚠ Soil is too dry!");
+    // Alert only if very low
+    if (moisture < 25) {
+      console.log("⚠ Soil is too dry!");
     }
   }
 }
 
 // RUN EVERY 2 SECONDS
 setInterval(updateDashboard, 2000);
-
-// LOGOUT
-function logout() {
-  localStorage.removeItem("loggedIn");
-  window.location.href = "login.html";
-}
